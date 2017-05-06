@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const autoprefixer = require('autoprefixer')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const isProd = process.env.NODE_ENV === 'production'
@@ -15,6 +16,7 @@ const babelConfig = {
 const config = {
   context: path.resolve(__dirname, './src'),
   entry: [
+    '!!style-loader!css-loader!semantic-ui-css/semantic.min.css',
     './entry.jsx'
   ],
   output: {
@@ -62,7 +64,7 @@ const config = {
         }
       },
       {
-        test: /\.(css|scss|sass)/,
+        test: /\.css/,
         use: [
           {
             loader: 'style-loader'
@@ -78,13 +80,37 @@ const config = {
             }
           },
           {
-            loader: 'sass-loader'
+            loader: 'postcss-loader',
+            options: {
+              plugins: [autoprefixer]
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(scss|sass)/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: !isProd,
+              importLoaders: true,
+              modules: true,
+              localIdentName: !isProd ? '[name]_[local]_[hash:base64:3]' : '[hash:base64:4]',
+              minimize: isProd
+            }
           },
           {
             loader: 'postcss-loader',
             options: {
-              plugins: [require('autoprefixer')()]
+              plugins: [autoprefixer]
             }
+          },
+          {
+            loader: 'sass-loader'
           }
         ]
       },
