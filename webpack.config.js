@@ -73,16 +73,13 @@ const config = {
             loader: 'css-loader',
             options: {
               sourceMap: !isProd,
-              importLoaders: true,
-              modules: true,
-              localIdentName: !isProd ? '[name]_[local]_[hash:base64:3]' : '[hash:base64:4]',
               minimize: isProd
             }
           },
           {
             loader: 'postcss-loader',
             options: {
-              plugins: [autoprefixer]
+              plugins: [autoprefixer()]
             }
           }
         ]
@@ -97,16 +94,13 @@ const config = {
             loader: 'css-loader',
             options: {
               sourceMap: !isProd,
-              importLoaders: true,
-              modules: true,
-              localIdentName: !isProd ? '[name]_[local]_[hash:base64:3]' : '[hash:base64:4]',
               minimize: isProd
             }
           },
           {
             loader: 'postcss-loader',
             options: {
-              plugins: [autoprefixer]
+              plugins: [autoprefixer()]
             }
           },
           {
