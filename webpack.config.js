@@ -62,7 +62,7 @@ const config = {
         }
       },
       {
-        test: /\.css/,
+        test: /\.(css|scss|sass)/,
         use: [
           {
             loader: 'style-loader'
@@ -76,6 +76,9 @@ const config = {
               localIdentName: !isProd ? '[name]_[local]_[hash:base64:3]' : '[hash:base64:4]',
               minimize: isProd
             }
+          },
+          {
+            loader: 'sass-loader'
           },
           {
             loader: 'postcss-loader',
