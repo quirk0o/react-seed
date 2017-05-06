@@ -1,0 +1,4 @@
+.idea/*
+!.idea/codeStyleSettings.xml
+node_modules
+*.log
