@@ -1,7 +1,7 @@
 import React from 'react'
 import {Route} from 'react-router-dom'
 
-import {Layout} from './modules/layout'
+import {Layout} from 'modules/layout'
 
 const App = () => (
   <Layout>

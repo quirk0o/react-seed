@@ -10,7 +10,21 @@ const port = process.env.PORT
 const babelConfig = {
   presets: ['env', 'react'],
   cacheDirectory: !isProd,
-  plugins: [require('babel-plugin-transform-object-rest-spread')]
+  plugins: [
+    require('babel-plugin-transform-object-rest-spread'),
+    [
+      'module-resolver',
+      {
+        'root': ['./'],
+        'alias': {
+          'test': './test',
+          'modules': './src/modules',
+          'assets': './src/assets',
+          'helpers': './src/helpers'
+        }
+      }
+    ]
+  ]
 }
 
 const config = {
