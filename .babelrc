@@ -1,0 +1,23 @@
+{
+  "presets": [
+    "env",
+    "react"
+  ],
+  "plugins": [
+    "babel-plugin-transform-object-rest-spread",
+    [
+      "module-resolver",
+      {
+        "root": [
+          "./"
+        ],
+        "alias": {
+          "test": "./test",
+          "modules": "./src/modules",
+          "assets": "./src/assets",
+          "helpers": "./src/helpers"
+        }
+      }
+    ]
+  ]
+}
